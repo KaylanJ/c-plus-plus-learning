@@ -69,4 +69,42 @@ An interactive program that calculates what your Earth weight would be on other 
 
 ---
 
+---
+
+## combat.cpp – OOP Character Battle Simulation
+
+An object-oriented combat simulator introducing classes, inheritance, and polymorphism through a turn-based fight between two characters.
+
+**What it does:**
+- Defines a base `Character` class with shared stats and behaviour
+- Derives `Warrior` and `Mage` subclasses that each override base class methods
+- Runs a turn-based fight loop between two characters until one is defeated
+
+**Classes:**
+
+`Character` (base)
+- Holds `name`, `health`, and `attack`
+- `takeDamage(int)` — reduces health by the given amount
+- `dealDamage()` — returns the character's attack value
+- `isAlive()`, `getName()`, `getHealth()` — utility accessors
+
+`Warrior` (extends `Character`)
+- Adds an `armor` stat
+- Overrides `takeDamage` — subtracts armor from incoming damage before applying it, with a floor of 0
+
+`Mage` (extends `Character`)
+- Adds a `mana` stat
+- Overrides `dealDamage` — if mana ≥ 10, spends 10 mana and returns double attack damage; otherwise falls back to base attack
+
+**Fight setup in `main`:**
+
+| Character | Type | HP | Attack | Extra |
+|---|---|---|---|---|
+| Brock | Warrior | 120 | 15 | 5 armor |
+| Zara | Mage | 80 | 12 | 30 mana |
+
+**Concepts covered:** classes, constructors, member initializer lists, `protected` vs `public`, inheritance, `virtual` functions, `override`, polymorphism via pointers, `std::max`, `using` declarations
+
+---
+
 *More projects will be added as the language learning continues, leading up to a final showcase project.*
