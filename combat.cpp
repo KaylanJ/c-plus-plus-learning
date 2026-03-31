@@ -5,7 +5,7 @@
 using std::cout;
 using std::string;
 using std::endl;
-using std::max; // Added this to fix the Warrior class
+using std::max; 
 
 class Character {
 protected:
@@ -13,8 +13,7 @@ protected:
     int health;
     int attack;
 public:
-    Character(string name, int health, int attack)
-        : name(name), health(health), attack(attack) {}
+    Character(string name, int health, int attack) : name(name), health(health), attack(attack) {}
 
     virtual void takeDamage(int damage) {
         health -= damage;
