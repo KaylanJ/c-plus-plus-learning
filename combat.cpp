@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+
 using std::cout;
 using std::string;
 using std::endl;
-
+using std::max; // Added this to fix the Warrior class
 
 class Character {
 protected:
@@ -28,7 +29,6 @@ public:
     int getHealth() { return health; }
 };
 
-
 class Warrior : public Character {
     int armor;
 public:
@@ -36,12 +36,11 @@ public:
         : Character(name, health, attack), armor(armor) {}
 
     void takeDamage(int damage) override {
-        int reduced = max(0, damage - armor);
+        int reduced = max(0, damage - armor); // Now works with 'using std::max'
         health -= reduced;
         cout << name << "'s armor absorbs " << (damage - reduced) << " damage!\n";
     }
 };
-
 
 class Mage : public Character {
     int mana;
@@ -59,7 +58,6 @@ public:
         return attack;
     }
 };
-
 
 void fight(Character* a, Character* b) {
     cout << "=== " << a->getName() << " vs " << b->getName() << " ===\n\n";
@@ -88,13 +86,13 @@ void fight(Character* a, Character* b) {
     }
 
     string winner = a->isAlive() ? a->getName() : b->getName();
-    cout << "=== " << winner << " wins! ===\n";
+    cout << "\n=== " << winner << " wins! ===\n";
 }
 
-
 int main() {
-    Warrior warrior("Brock", 120, 15, 5);  // name hp attack armor
-    Mage    mage   ("Zara",   80, 12, 30); // name hp attack mana
+    Warrior warrior("Brock", 120, 15, 5);  
+    Mage    mage   ("Zara",   80, 12, 30); 
 
     fight(&warrior, &mage);
     return 0;
+} 
